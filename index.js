@@ -631,14 +631,14 @@ var vm = new Vue({
     check:function(){
       if(this.wordTyped !='')
       {
-        if(this.wordTyped == this.wordToWrite){ this.rightAnswer++;  }
-        else { this.wrongAnswer++;  this.wrongTypedWords.push(this.wordToWrite) }
+        if(this.wordTyped.trim() == this.wordToWrite){ this.rightAnswer++;  }
+        else { this.wrongAnswer++;  this.wrongTypedWords.push([this.wordTyped,this.wordToWrite]) }
         this.newWord()
         this.wordTyped='';
       }
     },
 
-  
+
 
     listenAgain:function(){
       responsiveVoice.speak(this.wordToWrite,"French Female");

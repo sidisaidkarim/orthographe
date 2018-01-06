@@ -26,7 +26,7 @@
      color:#8de88d;
    }
    .red{
-     color:red;
+     color:#db6659;
    }
    #start{
      background-color: #4caf50;
@@ -34,7 +34,13 @@
      padding:7px;
      font-size: 1.3em;
    }
+   .normal{
+     font-size:0.8em;
 
+   }
+   del{
+     color:#bababa;
+   }
   </style>
 
   <body>
@@ -53,11 +59,12 @@
 
            <input type="text" v-on:keyup.enter="check" v-model="wordTyped"  placeholder="Ecriver le mot ici"/>
            <h2><span class="green">{{rightAnswer}}</span><br /><span class="red">{{wrongAnswer }}</span></h2>
-           <button v-on:click="listenAgain">Récouter</button>
+           <button v-on:click="listenAgain">Réécouter</button>
            <br />
            <br />
-           Erreurs :
-            <span v-for="word in wrongTypedWords" v-if="wrongTypedWords.length>0" >{{word+", "}} </span>
+           <!--Erreurs :-->
+            <span class="normal" v-for="word in wrongTypedWords" v-if="wrongTypedWords.length>0" >
+              <del>{{word[0]+"  "}}</del> {{": "+word[1]+" , "}} </span>
           </div>
         </div>
 
