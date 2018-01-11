@@ -613,15 +613,16 @@ var vm = new Vue({
    wordToWrite:'',
    rightAnswer:0,
    wrongAnswer:0,
-   show:true,
+   //show:true,
    wrongTypedWords:[],
-   showWords:false,
    started:false,
+   animation:'',
 
  },
  methods:{
    newWord:function(){
-      this.show=false;
+
+      //this.show=false;
       this.started=true;
       this.wordToWrite = listMot[Math.floor((Math.random() * 600) + 1)];
       responsiveVoice.speak(this.wordToWrite,"French Female");
@@ -629,12 +630,19 @@ var vm = new Vue({
     },
 
     check:function(){
+
       if(this.wordTyped !='')
       {
-        if(this.wordTyped.trim() == this.wordToWrite){ this.rightAnswer++;  }
-        else { this.wrongAnswer++;  this.wrongTypedWords.push([this.wordTyped,this.wordToWrite]) }
-        this.newWord()
+
+        if(this.wordTyped.trim() == this.wordToWrite){ this.rightAnswer++;
+          this.animation='greenanimation'; }
+        else { this.wrongAnswer++; this.animation="redanimation"
+           this.wrongTypedWords.push([this.wordTyped,this.wordToWrite]) }
+
+        this.newWord();
         this.wordTyped='';
+        setTimeout(function(){vm.animation="zolo"},1000);
+
       }
     },
 

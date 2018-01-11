@@ -41,6 +41,23 @@
    del{
      color:#bababa;
    }
+   @keyframes green {
+       from {background-color: #4caf50;}
+       to {background-color:white;}
+   }
+   .greenanimation{
+     animation-name: green;
+     animation-duration: 1s;
+
+   }
+   @keyframes red {
+       from {background-color: #db6659;}
+       to {background-color:white;}
+   }
+   .redanimation{
+     animation-name: red;
+     animation-duration: 1s;
+   }
   </style>
 
   <body>
@@ -48,16 +65,18 @@
 
 
         <div id="el">
-          <h4 v-if="show">
+          <h4 v-if="!started">
              Vous allez entendre des mots parmi les 600 mots les plus utilisés
              de la langue français, essayez de les écrire correctement.
           </h4>
-          <button v-on:click="newWord()" v-if="show" id="start">Commencer</button><br />
+          <button v-on:click="newWord()" v-if="!started" id="start">Commencer</button><br />
 
            <div v-if="started">
 
 
-           <input type="text" v-on:keyup.enter="check" v-model="wordTyped"  placeholder="Ecriver le mot ici"/>
+           <input type="text" v-on:keyup.enter="check" v-model="wordTyped" placeholder="Ecriver le mot ici"
+            v-bind:class="animation"
+            />
            <h2><span class="green">{{rightAnswer}}</span><br /><span class="red">{{wrongAnswer }}</span></h2>
            <button v-on:click="listenAgain">Réécouter</button>
            <br />
