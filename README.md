@@ -2,3 +2,5 @@ une petite application pour apprendre l'orthographe des 600 mots les plus utilis
 avec: 
 - Vuejs
 - responsiveVois.js
+
+![alt text](Capture.PNG)
